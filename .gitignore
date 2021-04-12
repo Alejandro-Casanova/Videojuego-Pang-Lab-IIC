@@ -1,1 +1,38 @@
 tema2inicial_VS19x64/.vs
+tema2inicial_VS19x64/x64
+tema4inicial_VS19x64/.vs
+tema4inicial_VS19x64/tmp
+*.vs
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
