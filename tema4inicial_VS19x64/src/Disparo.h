@@ -9,11 +9,13 @@ public:
 	virtual ~Disparo();
 
 	void dibuja();
+	void mueve(float t);
 
 	float radio;
+	Vector2D origen;
 	Vector2D posicion;
 	Vector2D velocidad;
 	Vector2D aceleracion;
-	void mueve(float t);
+	
 };
 

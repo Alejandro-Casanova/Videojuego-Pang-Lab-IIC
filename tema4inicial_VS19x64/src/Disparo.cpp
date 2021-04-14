@@ -3,6 +3,9 @@
 
 Disparo::Disparo() : radio(0.25f) 
 {
+	//TEMPORAL
+	origen.x = 0;
+	origen.y = 0;
 }
 
 Disparo::~Disparo()
@@ -15,6 +18,12 @@ void Disparo::dibuja() {
 	glTranslatef(posicion.x, posicion.y, 0);
 	glutSolidSphere(radio, 20, 20);
 	glPopMatrix();
+
+	//Dibuja Estela
+	glBegin(GL_LINES);
+	glVertex3f(origen.x, origen.y, 0.0f);
+	glVertex3f(posicion.x, posicion.y, 0.0f);
+	glEnd();
 }
 
 void Disparo::mueve(float t)
