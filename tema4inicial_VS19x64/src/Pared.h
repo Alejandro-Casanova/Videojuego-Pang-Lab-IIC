@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vector2D.h"
+#include "ColorRGB.h"
 
 class Pared
 {
@@ -14,10 +15,7 @@ public:
 	void setLimites(float limite1x, float limite1y, float limite2x, float limite2y);
 
 private:
-	unsigned char _r;
-	unsigned char _g;
-	unsigned char _b;
-
+	ColorRGB _color;
 	Vector2D _limite1;
 	Vector2D _limite2;
 };

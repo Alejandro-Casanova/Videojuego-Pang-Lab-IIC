@@ -11,6 +11,7 @@ public:
 	void dibuja();
 	void mueve(float t);
 
+private:
 	float radio;
 	Vector2D origen;
 	Vector2D posicion;

@@ -15,9 +15,9 @@ public:
 	void mueve();
 	void dibuja();
 
-	float x_ojo;
-	float y_ojo;
-	float z_ojo;
+	float x_ojo = 0;
+	float y_ojo = 0;
+	float z_ojo = 0;
 
 	Disparo disparo;
 	Esfera esfera;

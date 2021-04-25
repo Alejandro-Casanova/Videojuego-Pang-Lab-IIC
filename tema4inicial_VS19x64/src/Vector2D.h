@@ -5,7 +5,7 @@ public:
 	Vector2D(float x, float y);
 	virtual ~Vector2D();
 
-	float x;
-	float y;
+	float x = 0;
+	float y = 0;
 };
 

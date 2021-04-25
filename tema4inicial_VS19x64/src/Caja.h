@@ -9,6 +9,7 @@ public:
 
 	void dibuja();
 
+private:
 	Pared suelo;
 	Pared techo;
 	Pared pared_izq;

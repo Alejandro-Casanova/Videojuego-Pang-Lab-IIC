@@ -1,13 +1,12 @@
 #include "Pared.h"
 #include "freeglut.h"
 
-Pared::Pared() : _r(255), _g(255), _b(255)
-{
+Pared::Pared(){
 
 }
 
-Pared::~Pared()
-{
+Pared::~Pared(){
+
 }
 
 void Pared::dibuja() {

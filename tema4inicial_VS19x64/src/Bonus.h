@@ -9,11 +9,13 @@ public:
 	virtual ~Bonus();
 
 	void dibuja();
+	void mueve(float t);
 
+private:
 	float lado;
 	Vector2D posicion;
 	Vector2D velocidad;
 	Vector2D aceleracion;
-	void mueve(float t);
+	
 };
 

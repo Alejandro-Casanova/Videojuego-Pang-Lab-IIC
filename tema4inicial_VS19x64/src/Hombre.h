@@ -8,11 +8,13 @@ public:
 	virtual ~Hombre();
 
 	void dibuja();
+	void mueve(float t);
 
+private:
 	float altura;
 	Vector2D posicion;
 	Vector2D velocidad;
 	Vector2D aceleracion;
-	void mueve(float t);
+	
 };
 

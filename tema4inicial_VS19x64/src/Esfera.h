@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vector2D.h"
+#include "ColorRGB.h"
 
 class Esfera
 {
@@ -16,9 +17,7 @@ public:
 	void setPos(float x, float y);
 
 private:
-	unsigned char _r;
-	unsigned char _g;
-	unsigned char _b;
+	ColorRGB _color;
 	float _radio;
 
 	Vector2D _posicion;
