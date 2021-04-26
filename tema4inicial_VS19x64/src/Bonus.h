@@ -10,12 +10,13 @@ public:
 
 	void dibuja();
 	void mueve(float t);
+	void setPos(float ix, float iy) { _posicion.x = ix; _posicion.y = iy; }
 
 private:
-	float lado;
-	Vector2D posicion;
-	Vector2D velocidad;
-	Vector2D aceleracion;
+	float _lado;
+	Vector2D _posicion;
+	Vector2D _velocidad;
+	Vector2D _aceleracion;
 	
 };
 

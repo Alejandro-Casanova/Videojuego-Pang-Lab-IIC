@@ -10,6 +10,7 @@ class Mundo
 {
 public: 
 	void tecla(unsigned char key);
+	void teclaEspecial(unsigned char key);
 	void inicializa();
 	void rotarOjo();
 	void mueve();
@@ -20,7 +21,7 @@ public:
 	float z_ojo = 0;
 
 	Disparo disparo;
-	Esfera esfera;
+	Esfera esfera, esfera2;
 	Hombre hombre;
 	Caja caja;
 	Bonus bonus;

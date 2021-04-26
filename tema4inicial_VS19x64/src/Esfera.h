@@ -5,6 +5,7 @@
 
 class Esfera
 {
+	friend class Interaccion;
 public:
 	Esfera();
 	virtual ~Esfera();
@@ -12,9 +13,10 @@ public:
 	void dibuja();
 	void mueve(float t);
 
-	void setColor(unsigned char r, unsigned char g, unsigned char b);
-	void setRadio(float radio);
-	void setPos(float x, float y);
+	void setColor(unsigned char r, unsigned char g, unsigned char b) { _color.set(r, g, b); }
+	void setRadio(float radio) { _radio = radio; }
+	void setPos(float x, float y) { _posicion.x = x; _posicion.y = y; }
+	void setVel(float vx, float vy) { _velocidad.x = vx; _velocidad.y = vy; }
 
 private:
 	ColorRGB _color;

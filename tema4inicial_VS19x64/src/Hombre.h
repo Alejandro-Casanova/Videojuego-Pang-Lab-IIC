@@ -3,6 +3,7 @@
 #include "Vector2D.h"
 class Hombre
 {
+	friend class Interaccion;
 public:
 	Hombre();
 	virtual ~Hombre();
@@ -10,11 +11,13 @@ public:
 	void dibuja();
 	void mueve(float t);
 
+	void setVel(float vx, float vy);
+
 private:
-	float altura;
-	Vector2D posicion;
-	Vector2D velocidad;
-	Vector2D aceleracion;
+	float _altura;
+	Vector2D _posicion;
+	Vector2D _velocidad;
+	Vector2D _aceleracion;
 	
 };
 

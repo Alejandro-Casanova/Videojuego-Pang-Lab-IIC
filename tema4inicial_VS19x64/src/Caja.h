@@ -3,6 +3,7 @@
 #include "Pared.h"
 
 class Caja{
+	friend class Interaccion;
 public:
 	Caja();
 	virtual ~Caja();
@@ -10,8 +11,8 @@ public:
 	void dibuja();
 
 private:
-	Pared suelo;
-	Pared techo;
-	Pared pared_izq;
-	Pared pared_dcha;
+	Pared _suelo;
+	Pared _techo;
+	Pared _pared_izq;
+	Pared _pared_dcha;
 };

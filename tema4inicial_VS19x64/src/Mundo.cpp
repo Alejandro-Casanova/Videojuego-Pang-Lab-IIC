@@ -1,6 +1,7 @@
 #include "Mundo.h"
 #include "freeglut.h"
 #include <math.h>
+#include "Interaccion.h"
 
 void Mundo::rotarOjo()
 {
@@ -17,6 +18,7 @@ void Mundo::dibuja()
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 
 	esfera.dibuja();
+	esfera2.dibuja();
 	caja.dibuja();
 	hombre.dibuja();
 	disparo.dibuja();
@@ -28,8 +30,16 @@ void Mundo::mueve()
 {
 	hombre.mueve(0.025f);
 	esfera.mueve(0.025f);
+	esfera2.mueve(0.025f);
 	bonus.mueve(0.025f);
 	disparo.mueve(0.025f);
+
+	Interaccion::rebote(hombre, caja);
+	Interaccion::rebote(esfera, caja);
+	Interaccion::rebote(esfera, plataforma);
+	Interaccion::rebote(esfera2, caja);
+	Interaccion::rebote(esfera2, plataforma);
+	Interaccion::rebote(esfera, esfera2);
 }
 
 void Mundo::inicializa()
@@ -41,15 +51,31 @@ void Mundo::inicializa()
 	esfera.setPos(2.0f,4.0f);
 	esfera.setRadio(1.5f);
 	esfera.setColor(0, 0, 255);
+	esfera.setVel(5.0f, 15.0f);
+
+	esfera2.setRadio(2.0f);
+	esfera2.setPos(-2.0f, 4.0f);
+	esfera2.setVel(-5.0f, 15.0f);
 	
-	bonus.posicion.x = 5.0f;
-	bonus.posicion.y = 5.0f;
-	disparo.posicion.x = -5.0f;
-	disparo.posicion.y = 0.0f;
+	bonus.setPos(5.0f, 5.0f);
+	disparo.setPos(-5.0f, 0.0f);
 	plataforma.setLimites(-7.0f, 5.0f, 7.0f, 5.0f);
 }
 
 void Mundo::tecla(unsigned char key)
 {
 
+}
+
+void Mundo::teclaEspecial(unsigned char key)
+{
+	switch (key)
+	{
+	case GLUT_KEY_LEFT:
+		hombre.setVel(-5.0f, 0.0f);
+		break;
+	case GLUT_KEY_RIGHT:
+		hombre.setVel(5.0f, 0.0f);
+		break;
+	}
 }
