@@ -5,10 +5,15 @@
 #include "Esfera.h"
 #include "Bonus.h"
 #include "Disparo.h"
+#include "ListaEsferas.h"
+#include "ListaDisparos.h"
 
 class Mundo
 {
 public: 
+	Mundo();
+	~Mundo();
+
 	void tecla(unsigned char key);
 	void teclaEspecial(unsigned char key);
 	void inicializa();
@@ -21,9 +26,11 @@ public:
 	float z_ojo = 0;
 
 	Disparo disparo;
-	Esfera esfera, esfera2;
 	Hombre hombre;
 	Caja caja;
 	Bonus bonus;
 	Pared plataforma;
+private:
+	ListaEsferas esferas;
+	ListaDisparos disparos;
 };

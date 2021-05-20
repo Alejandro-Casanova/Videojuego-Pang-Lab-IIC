@@ -16,8 +16,8 @@ void Pared::dibuja() {
 	glBegin(GL_POLYGON);
 	glVertex3d(_limite1.x, _limite1.y, 10);
 	glVertex3d(_limite2.x, _limite2.y, 10);
-	glVertex3d(_limite2.x, _limite2.y, -10);
-	glVertex3d(_limite1.x, _limite1.y, -10);
+	glVertex3d(_limite2.x, _limite2.y, 0);
+	glVertex3d(_limite1.x, _limite1.y, 0);
 	glEnd();
 	glEnable(GL_LIGHTING);
 }

@@ -8,6 +8,7 @@ class Esfera
 	friend class Interaccion;
 public:
 	Esfera();
+	Esfera(float rad, float x = 0.0f, float y = 0.0f, float vx = 0.0f, float vy = 0.0f);
 	virtual ~Esfera();
 
 	void dibuja();
@@ -17,6 +18,7 @@ public:
 	void setRadio(float radio) { _radio = radio; }
 	void setPos(float x, float y) { _posicion.x = x; _posicion.y = y; }
 	void setVel(float vx, float vy) { _velocidad.x = vx; _velocidad.y = vy; }
+	Vector2D getPos() const { return _posicion; }
 
 private:
 	ColorRGB _color;

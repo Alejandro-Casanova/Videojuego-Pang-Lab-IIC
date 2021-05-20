@@ -2,6 +2,7 @@
 #include "Caja.h"
 #include "Hombre.h"
 #include "Esfera.h"
+#include "Disparo.h"
 #include <math.h>
 
 void Interaccion::rebote(Hombre& h, Caja c)
@@ -63,4 +64,29 @@ bool Interaccion::rebote(Esfera& a, Esfera& b)
 	}
 
 	return false;
+}
+
+bool Interaccion::colision(Esfera e, Hombre h) {
+	Vector2D pos = h.getPos(); //la posicion de la base del hombre 
+	pos.y+=h.getAltura()/2.0f; //posicion del centro 
+	float distancia=(e._posicion-pos).modulo(); 
+	if(distancia<e._radio) 
+		return true; 
+	return false; 
+}
+
+bool Interaccion::colision(Disparo d, Pared p)
+{
+	Vector2D dir;
+	float dif = p.distancia(d.getPos(), &dir) - d.getRadio();
+	if (dif <= 0.0f)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool Interaccion::colision(Disparo d, Caja c)
+{
+	return  (colision(d, c._pared_dcha) || colision(d, c._pared_izq) || colision(d, c._suelo) || colision(d, c._techo));
 }

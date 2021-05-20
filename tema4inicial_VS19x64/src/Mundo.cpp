@@ -3,6 +3,13 @@
 #include <math.h>
 #include "Interaccion.h"
 
+Mundo::Mundo()
+{
+}
+
+Mundo::~Mundo() {
+}
+
 void Mundo::rotarOjo()
 {
 	float dist=sqrtf(x_ojo*x_ojo+z_ojo*z_ojo);
@@ -17,29 +24,36 @@ void Mundo::dibuja()
 			0.0, y_ojo, 0.0,      // hacia que punto mira  (0,0,0) 
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 
-	esfera.dibuja();
-	esfera2.dibuja();
-	caja.dibuja();
 	hombre.dibuja();
+	disparos.dibuja();
 	disparo.dibuja();
 	plataforma.dibuja();
 	bonus.dibuja();
+	caja.dibuja();
+
+	esferas.dibuja();
+	
 }
 
 void Mundo::mueve()
 {
-	hombre.mueve(0.025f);
-	esfera.mueve(0.025f);
-	esfera2.mueve(0.025f);
-	bonus.mueve(0.025f);
+	hombre.mueve(0.025f); 
+	bonus.mueve(0.025f); 
 	disparo.mueve(0.025f);
+	esferas.mueve(0.025f); 
+	disparos.mueve(0.025f);
 
-	Interaccion::rebote(hombre, caja);
-	Interaccion::rebote(esfera, caja);
-	Interaccion::rebote(esfera, plataforma);
-	Interaccion::rebote(esfera2, caja);
-	Interaccion::rebote(esfera2, plataforma);
-	Interaccion::rebote(esfera, esfera2);
+	esferas.rebote(); 
+	esferas.rebote(plataforma); 
+	esferas.rebote(caja); 
+	disparos.colision(plataforma);
+	disparos.colision(caja);
+
+	Esfera* aux = esferas.colision(hombre); 
+	if (aux != 0)//si alguna esfera ha chocado 
+		esferas.eliminar(aux); 
+
+	Interaccion::rebote(hombre,caja);
 }
 
 void Mundo::inicializa()
@@ -48,23 +62,44 @@ void Mundo::inicializa()
 	y_ojo=0.0f;
 	z_ojo=30.0f;
 
-	esfera.setPos(2.0f,4.0f);
-	esfera.setRadio(1.5f);
-	esfera.setColor(0, 0, 255);
-	esfera.setVel(5.0f, 15.0f);
+	Esfera* esfera = new Esfera(1.5f, 2.0f, 4.0f, 5.0f, 15.0f);;
+	esfera->setColor(0, 0, 255);
+	esferas.agregar(esfera);
 
-	esfera2.setRadio(2.0f);
-	esfera2.setPos(-2.0f, 4.0f);
-	esfera2.setVel(-5.0f, 15.0f);
+	Esfera* esfera2 = new Esfera(2.0f, -2.0f, 4.0f, -5.0f, 15.0f);;
+	esfera->setColor(255, 255, 255);
+	esferas.agregar(esfera);
 	
 	bonus.setPos(5.0f, 5.0f);
 	disparo.setPos(-5.0f, 0.0f);
 	plataforma.setLimites(-7.0f, 5.0f, 7.0f, 5.0f);
+
+	for (int i = 0; i < 3; i++) { 
+		Esfera* aux = new Esfera(0.75 + i * 0.25, i, 1 + i, i, i); 
+		esferas.agregar(aux); 
+	}
 }
 
 void Mundo::tecla(unsigned char key)
 {
-
+	switch (key) { 
+	case '1': esferas.agregar(new Esfera(0.5f, 10, 0)); 
+		break; 
+	case '2': esferas.agregar(new Esfera(1.0f, 0, 10)); 
+		break; 
+	case '3': esferas.agregar(new Esfera(1.5f, 0, 10)); 
+		break; 
+	case '4': esferas.agregar(new Esfera(2.0f, 0, 10)); 
+		break; 
+	case ' ':
+		Disparo* d = new Disparo(); 
+		Vector2D pos = hombre.getPos(); 
+		d->setPos(pos.x, pos.y); 
+		d->setOrigen(pos.x, pos.y);
+		d->setVel(0.0f, 5.0f);
+		disparos.agregar(d); 
+		break; 
+	}
 }
 
 void Mundo::teclaEspecial(unsigned char key)

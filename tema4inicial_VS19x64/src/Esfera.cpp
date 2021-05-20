@@ -8,6 +8,16 @@ Esfera::Esfera()
 	_aceleracion.y = -9.8f;
 }
 
+Esfera::Esfera(float rad, float x, float y, float vx, float vy) {
+	_radio = rad; 
+	_posicion.x = x; 
+	_posicion.y = y; 
+	_velocidad.x = vx; 
+	_velocidad.y = vy; 
+	_color.set(255, 255, 100);
+	_aceleracion.y=-9.8; 
+}
+
 Esfera::~Esfera(){
 }
 

@@ -9,7 +9,7 @@ Vector2D::~Vector2D() {
 }
 
 float Vector2D::modulo(){
-	return (float)sqrt(x * x + y * y);
+	return (float)sqrtf(x * x + y * y);
 }
 
 float Vector2D::argumento(){

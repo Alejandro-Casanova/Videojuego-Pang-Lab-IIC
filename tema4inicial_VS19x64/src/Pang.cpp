@@ -68,6 +68,8 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 void onSpecialKeyboardDown(int key, int x, int y)
 {
 	mundo.teclaEspecial(key);
+
+	glutPostRedisplay();
 }
 
 void OnTimer(int value)

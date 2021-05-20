@@ -3,6 +3,7 @@ tema2inicial_VS19x64/x64
 tema4inicial_VS19x64/.vs
 tema4inicial_VS19x64/tmp
 *.vs
+deps
 
 # Prerequisites
 *.d
