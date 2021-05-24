@@ -1,22 +1,17 @@
 #pragma once
 
 #include "Vector2D.h"
+#include "ObjetoMovil.h"
 
-class Bonus
+class Bonus : public ObjetoMovil
 {
 public:
 	Bonus();
 	virtual ~Bonus();
 
 	void dibuja();
-	void mueve(float t);
-	void setPos(float ix, float iy) { _posicion.x = ix; _posicion.y = iy; }
 
 private:
-	float _lado;
-	Vector2D _posicion;
-	Vector2D _velocidad;
-	Vector2D _aceleracion;
-	
+	float _lado;	
 };
 

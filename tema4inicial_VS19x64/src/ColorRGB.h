@@ -9,7 +9,7 @@ struct ColorRGB
 	void set(Byte red = 255, Byte green = 255, Byte blue = 255) {
 		r = red; g = green; b = blue;
 	}
-	void ponColor() {
+	void ponColor() const{
 		glColor3ub(r, g, b);
 	};
 	Byte r, g, b;

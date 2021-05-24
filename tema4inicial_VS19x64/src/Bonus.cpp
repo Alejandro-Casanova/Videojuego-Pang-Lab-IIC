@@ -19,9 +19,3 @@ void Bonus::dibuja() {
 	glutSolidCube(_lado);
 	glPopMatrix();
 }
-
-void Bonus::mueve(float t)
-{
-	_posicion = _posicion + _velocidad * t + _aceleracion * (0.5f * t * t);
-	_velocidad = _velocidad + _aceleracion * t;
-}

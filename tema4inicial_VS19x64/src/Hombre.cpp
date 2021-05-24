@@ -29,15 +29,3 @@ void Hombre::dibuja() {
 
 	glPopMatrix();
 }
-
-void Hombre::mueve(float t)
-{
-	_posicion = _posicion + _velocidad * t + _aceleracion * (0.5f * t * t);
-	_velocidad = _velocidad + _aceleracion * t;
-	sprite.loop();
-}
-
-void Hombre::setVel(float vx, float vy){
-	_velocidad.x = vx;
-	_velocidad.y = vy;
-}

@@ -3,8 +3,8 @@
 #include <math.h>
 #include "Interaccion.h"
 
-Mundo::Mundo()
-{
+
+Mundo::Mundo(){
 }
 
 Mundo::~Mundo() {
@@ -18,6 +18,7 @@ void Mundo::rotarOjo()
 	x_ojo=dist*cosf(ang);
 	z_ojo=dist*sinf(ang);
 }
+
 void Mundo::dibuja()
 {
 	gluLookAt(x_ojo, y_ojo, z_ojo,  // posicion del ojo
@@ -27,11 +28,14 @@ void Mundo::dibuja()
 	hombre.dibuja();
 	disparos.dibuja();
 	disparo.dibuja();
+	disparoEspecial.dibuja();
 	plataforma.dibuja();
 	bonus.dibuja();
 	caja.dibuja();
 
 	esferas.dibuja();
+	esferaPulsante.dibuja();
+	
 	
 }
 
@@ -42,6 +46,8 @@ void Mundo::mueve()
 	disparo.mueve(0.025f);
 	esferas.mueve(0.025f); 
 	disparos.mueve(0.025f);
+	esferaPulsante.mueve(0.025f);
+	disparoEspecial.mueve(0.025f);
 
 	esferas.rebote(); 
 	esferas.rebote(plataforma); 
@@ -75,9 +81,12 @@ void Mundo::inicializa()
 	plataforma.setLimites(-7.0f, 5.0f, 7.0f, 5.0f);
 
 	for (int i = 0; i < 3; i++) { 
-		Esfera* aux = new Esfera(0.75 + i * 0.25, i, 1 + i, i, i); 
+		Esfera* aux = new Esfera(0.75f + i * 0.25f, float(i), float(1 + i), float(i), float(i)); 
 		esferas.agregar(aux); 
 	}
+
+	disparoEspecial.setPos(-5.0f, -5.0f);
+	disparoEspecial.setVel(0.0f, 2.0f);
 }
 
 void Mundo::tecla(unsigned char key)
@@ -95,7 +104,7 @@ void Mundo::tecla(unsigned char key)
 		Disparo* d = new Disparo(); 
 		Vector2D pos = hombre.getPos(); 
 		d->setPos(pos.x, pos.y); 
-		d->setOrigen(pos.x, pos.y);
+		//d->setOrigen(pos.x, pos.y);
 		d->setVel(0.0f, 5.0f);
 		disparos.agregar(d); 
 		break; 

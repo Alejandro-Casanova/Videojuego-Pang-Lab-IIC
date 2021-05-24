@@ -7,6 +7,8 @@
 #include "Disparo.h"
 #include "ListaEsferas.h"
 #include "ListaDisparos.h"
+#include "EsferaPulsante.h"
+#include "DisparoEspecial.h"
 
 class Mundo
 {
@@ -33,4 +35,6 @@ public:
 private:
 	ListaEsferas esferas;
 	ListaDisparos disparos;
+	EsferaPulsante esferaPulsante;
+	DisparoEspecial disparoEspecial;
 };
