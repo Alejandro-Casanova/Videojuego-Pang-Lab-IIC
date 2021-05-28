@@ -29,4 +29,15 @@ void Esfera::dibuja() {
 	glTranslatef(-_posicion.x, -_posicion.y, 0);
 }
 
+Esfera* Esfera::dividir() {
+	if (_radio < 1.0f) 
+		return 0;   //no dividimos 
+	_radio /= 2.0f; //Dividimos el radio por 2 
+	//Creamos una esfera nueva, copiando la actual 
+	Esfera *aux = new Esfera(*this); //Les damos nuevas velocidades 
+	aux->setVel(5.0f, 8.0f);//a la nueva mitad 
+	setVel(-5.0f, 8.0f);//a la mitad original 
+	return aux; 
+}
+
 

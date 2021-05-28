@@ -11,7 +11,7 @@ public:
 	virtual ~Pared();
 
 	void dibuja();
-	float distancia(Vector2D punto, Vector2D* direccion = 0);
+	float distancia(Vector2D punto, Vector2D* direccion = 0) const;
 
 	void setColor(unsigned char r, unsigned char g, unsigned char b) { _color.set(r, g, b); }
 	void setLimites(float limite1x, float limite1y, float limite2x, float limite2y) {

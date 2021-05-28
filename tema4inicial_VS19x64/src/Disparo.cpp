@@ -3,14 +3,13 @@
 
 Disparo::Disparo() 
 {
-	//TEMPORAL
-	_origen.x = 0;
-	_origen.y = 0;
-	_color.set(255, 255, 255);
+	setColor(255, 255, 255);
+	setVel(0.0f, 7.5f);
 }
 
 Disparo::~Disparo()
 {
+	(*_nDisparosPtr)++; //Recupera los disparos que impactan
 }
 
 void Disparo::dibuja() const {

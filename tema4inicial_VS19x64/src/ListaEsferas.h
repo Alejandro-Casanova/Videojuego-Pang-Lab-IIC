@@ -27,7 +27,7 @@ public:
 
 	Esfera* operator [](int i);
 
-	int getNumero() { return numero; }
+	int getNumero() const { return numero; }
 
 private: 
 	Esfera* lista[MAX_ESFERAS]; 

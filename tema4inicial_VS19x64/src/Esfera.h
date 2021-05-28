@@ -13,6 +13,7 @@ public:
 	virtual ~Esfera();
 
 	void dibuja();
+	virtual Esfera* dividir();
 
 	void setColor(unsigned char r, unsigned char g, unsigned char b) { _color.set(r, g, b); }
 	void setRadio(float radio) { _radio = radio; }

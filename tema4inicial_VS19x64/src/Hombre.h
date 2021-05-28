@@ -14,6 +14,7 @@ public:
 	virtual ~Hombre();
 
 	void dibuja();
+	void mueve(float t) override;
 
 	float getAltura() const { return _altura; }
 

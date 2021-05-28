@@ -3,16 +3,16 @@
 
 Caja::Caja()
 {
-	_pared_izq.setLimites(-10.0f, -7.5f, -10.0f, 7.5f);
+	_pared_izq.setLimites(-_ancho / 2.0f, -_alto / 2.0f, -_ancho / 2.0f, _alto / 2.0f);
 	_pared_izq.setColor(0, 255, 0);
 
-	_pared_dcha.setLimites(10.0f, -7.5f, 10.0f, 7.5f);
+	_pared_dcha.setLimites(_ancho / 2.0f, -_alto / 2.0f, _ancho / 2.0f, _alto / 2.0f);
 	_pared_dcha.setColor(0, 255, 0);
 
-	_techo.setLimites(-10.0f, 7.5f, 10.0f, 7.5f);
+	_techo.setLimites(-_ancho / 2.0f, _alto / 2.0f, _ancho / 2.0f, _alto / 2.0f);
 	_techo.setColor(125, 255, 125);
 
-	_suelo.setLimites(-10.0f, -7.5f, 10.0f, -7.5f);
+	_suelo.setLimites(-_ancho / 2.0f, -_alto / 2.0f, _ancho / 2.0f, -_alto / 2.0f);
 	_suelo.setColor(125, 255, 125);
 }
 
@@ -32,10 +32,10 @@ void Caja::dibuja() {
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
-	glTexCoord2d(0, 1); glVertex2f(-10.0f, -7.5f);
-	glTexCoord2d(1, 1); glVertex2f(10.0f, -7.5f);
-	glTexCoord2d(1, 0); glVertex2f(10, 7.5f);
-	glTexCoord2d(0, 0); glVertex2f(-10.0f, 7.5f);
+	glTexCoord2d(0, 1); glVertex2f(-_ancho / 2.0f, -_alto / 2.0f);
+	glTexCoord2d(1, 1); glVertex2f(_ancho / 2.0f, -_alto / 2.0f);
+	glTexCoord2d(1, 0); glVertex2f(_ancho / 2.0f, _alto / 2.0f);
+	glTexCoord2d(0, 0); glVertex2f(-_ancho / 2.0f, _alto / 2.0f);
 	glEnd();
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);

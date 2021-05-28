@@ -2,8 +2,15 @@
 #include "freeglut.h"
 #include <stdlib.h>
 
-Bonus::Bonus() : _lado(2.0f)
+Bonus::Bonus() : _lado(1.0f)
 {
+	_aceleracion.y = -9.8f;
+}
+
+Bonus::Bonus(Vector2D pos) : _lado(1.0f)
+{
+	_aceleracion.y = -9.8f;
+	setPos(pos.x, pos.y);
 }
 
 Bonus::~Bonus()

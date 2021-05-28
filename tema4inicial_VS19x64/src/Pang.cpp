@@ -1,7 +1,9 @@
 #include "Mundo.h"
 #include "freeglut.h"
+#include "CoordinadorPang.h"
+#include "GestorDeTeclado.h"
 
-Mundo mundo;
+CoordinadorPang pang;
 
 //los callback, funciones que seran llamadas automaticamente por la glut
 //cuando sucedan eventos
@@ -9,7 +11,9 @@ Mundo mundo;
 void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
 void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla	
+void OnKeyboardUp(unsigned char key, int x, int y);
 void onSpecialKeyboardDown(int key, int x, int y);
+void onSpecialKeyboardUp(int key, int x, int y);
 
 int main(int argc,char* argv[])
 {
@@ -32,9 +36,11 @@ int main(int argc,char* argv[])
 	glutDisplayFunc(OnDraw);
 	glutTimerFunc(25,OnTimer,0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 	glutKeyboardFunc(OnKeyboardDown);
+	glutKeyboardUpFunc(OnKeyboardUp);
 	glutSpecialFunc(onSpecialKeyboardDown); //gestion de los cursores
+	glutSpecialUpFunc(onSpecialKeyboardUp);
 
-	mundo.inicializa();
+	//pang.inicializa();
 		
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();	
@@ -51,7 +57,7 @@ void OnDraw(void)
 	glMatrixMode(GL_MODELVIEW);	
 	glLoadIdentity();
 	
-	mundo.dibuja();
+	pang.dibuja();
 
 	//no borrar esta linea ni poner nada despues
 	glutSwapBuffers();
@@ -60,14 +66,30 @@ void OnDraw(void)
 void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 {
 	//poner aqui el código de teclado
-	mundo.tecla(key);
+	GestorDeTeclado::pressKey(key);
+	pang.tecla();
+
+	glutPostRedisplay();
+}
+
+void OnKeyboardUp(unsigned char key, int x_t, int y_t) {
+	GestorDeTeclado::releaseKey(key);
+	pang.tecla();
 
 	glutPostRedisplay();
 }
 
 void onSpecialKeyboardDown(int key, int x, int y)
 {
-	mundo.teclaEspecial(key);
+	GestorDeTeclado::pressKey(key);
+	pang.teclaEspecial();
+
+	glutPostRedisplay();
+}
+
+void onSpecialKeyboardUp(int key, int x, int y) {
+	GestorDeTeclado::releaseKey(key);
+	pang.teclaEspecial();
 
 	glutPostRedisplay();
 }
@@ -75,7 +97,9 @@ void onSpecialKeyboardDown(int key, int x, int y)
 void OnTimer(int value)
 {
 //poner aqui el código de animacion
-	mundo.mueve();
+	
+	pang.mueve();
+	GestorDeTeclado::update();
 
 	//no borrar estas lineas
 	glutTimerFunc(25,OnTimer,0);

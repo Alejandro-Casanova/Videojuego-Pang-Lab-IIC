@@ -1,10 +1,12 @@
 #include "Hombre.h"
 #include "freeglut.h"
+#include "GestorDeTeclado.h"
 
 Hombre::Hombre() : _altura(1.8f)
 {
 	sprite.setCenter(1, 0);
 	sprite.setSize(2, 2);
+	setPos(0.0f, -7.5f);
 }
 
 Hombre::~Hombre()
@@ -28,4 +30,22 @@ void Hombre::dibuja() {
 	sprite.draw();
 
 	glPopMatrix();
+}
+
+void Hombre::mueve(float t)
+{
+	if (GestorDeTeclado::isKeyPressed(GLUT_KEY_LEFT)) {
+		_velocidad.x -= 5.0f;
+	}
+	if (GestorDeTeclado::isKeyUnPressed(GLUT_KEY_LEFT)) {
+		_velocidad.x += 5.0f;
+	}
+	if (GestorDeTeclado::isKeyPressed(GLUT_KEY_RIGHT)) {
+		_velocidad.x += 5.0f;
+	}
+	if (GestorDeTeclado::isKeyUnPressed(GLUT_KEY_RIGHT)) {
+		_velocidad.x -= 5.0f;
+	}
+	ObjetoMovil::mueve(t);
+	sprite.loop();
 }

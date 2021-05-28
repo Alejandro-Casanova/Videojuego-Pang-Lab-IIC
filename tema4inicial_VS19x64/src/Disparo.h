@@ -6,14 +6,16 @@
 
 class Disparo : public ObjetoMovil
 {
+	friend class Interaccion;
 public:
 	Disparo();
 	virtual ~Disparo();
 
-	void dibuja() const;
+	virtual void dibuja() const;
 	void setPos(float ix, float iy) { _posicion.x = _origen.x = ix; _posicion.y = _origen.y = iy; }
-	//void setOrigen(float ox, float oy) { _origen.x = ox; _origen.y = oy; }
+	void setColor(Byte r, Byte g, Byte b) { _color.set(r, g, b); }
 	float getRadio() const { return _radio; }
+	void setPtr(int* ptr) { _nDisparosPtr = ptr; }
 
 protected:
 	void dibujaDisparo() const;
@@ -21,5 +23,6 @@ protected:
 	float _radio = 0.25f;
 	ColorRGB _color;
 	Vector2D _origen;
+	int* _nDisparosPtr = nullptr; //Puntero al contador de disparos disponibles de la clase mundo
 };
 
